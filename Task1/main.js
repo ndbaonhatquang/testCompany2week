@@ -26,16 +26,29 @@ function getWin() {
     if(boxes[1].innerHTML == boxes[4].innerHTML && boxes[1].innerHTML  == boxes[7].innerHTML && boxes[1].innerHTML != '') selectWin([boxes[1],boxes[4],boxes[7]]);
     if(boxes[2].innerHTML == boxes[5].innerHTML && boxes[2].innerHTML  == boxes[8].innerHTML && boxes[2].innerHTML != '') selectWin([boxes[2],boxes[5],boxes[8]]);
     if(boxes[0].innerHTML == boxes[4].innerHTML && boxes[0].innerHTML  == boxes[8].innerHTML && boxes[0].innerHTML != '') selectWin([boxes[0],boxes[4],boxes[8]]);
-    if(boxes[1].innerHTML == boxes[4].innerHTML && boxes[1].innerHTML  == boxes[6].innerHTML && boxes[1].innerHTML != '') selectWin([boxes[0],boxes[4],boxes[6]]);
+    if(boxes[2].innerHTML == boxes[4].innerHTML && boxes[2].innerHTML  == boxes[6].innerHTML && boxes[2].innerHTML != '') selectWin([boxes[2],boxes[4],boxes[6]]);
 }
 function resetGame() {
     boxes.forEach(box => {
         box.innerHTML = '';
         box.style.background = '#fff';
     })
+    isWiner = false;
+    winner.innerHTML = '';
 }
-
+function hover() {
+    if(isWiner) return;
+    this.style.background= 'gray';
+    this.style.color= 'aliceblue';
+}
+function hoverOut() {
+    if(isWiner) return;
+    this.style.background= 'white';
+    this.style.color= 'black';
+}
 boxes.forEach(box =>  {
     box.addEventListener('click', getClick)
+    box.addEventListener("mouseover", hover);
+    box.addEventListener("mouseout", hoverOut);
 })
 reset.addEventListener('click', resetGame);

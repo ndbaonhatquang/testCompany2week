@@ -21,11 +21,6 @@
     cursor: pointer;
 }
 
-.container .box:hover {
-    background: gray;
-    color: aliceblue;
-}
-
 #winner {
     width: 100%;
     background: green;
