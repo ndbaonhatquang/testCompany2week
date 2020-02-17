@@ -103,20 +103,25 @@ function keyPush(evt) {
             break;
     }
 }
+
 function modeGame(e) {
     mode = e.target.name;
+    playX=playY=10;
+    appleX=Math.floor(Math.random()*gridSize);
+    appleY=Math.floor(Math.random()*gridSize);
+    x=y=0;
+    trail=[];
+    tail = 1;
 }
-function stopFunc() {
-    clearInterval(myInterval);
-}
-let myInterval = setInterval(function () {
+function check() {
     if(mode == 'modeB')  {
         gameB();
     }
     if(mode == 'modeA')  {
         gameA();
     }
-},1000);
+}
+let myInterval = setInterval(check,100);
 
 buttons.forEach(button => button.addEventListener('click', modeGame));
 document.addEventListener("keydown",keyPush);

@@ -57,7 +57,6 @@ function scrollFunc() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         createData();
     }
-    console.log(document.body.offsetHeight);
     window.addEventListener('scroll', scrollFunc);
     sortTable();
 }
