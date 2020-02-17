@@ -10,6 +10,14 @@ let appleY=Math.floor(Math.random()*gridSize);
 let x=y=0;
 let trail=[];
 let tail = 1;
+function restart() {
+    playX=playY=10;
+    appleX=Math.floor(Math.random()*gridSize);
+    appleY=Math.floor(Math.random()*gridSize);
+    x=y=0;
+    trail=[];
+    tail = 1;
+}
 function gameB() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     playX+=x;
@@ -54,16 +62,16 @@ function gameA() {
     playX+=x;
     playY+=y;
     if(playX<0) {
-        tail = 0;
+        restart();
     }
-    if(playX>gridSize-1) {
-        tail = 0;
+    if(playX>gridSize - 1) {
+        restart();
     }
     if(playY<0) {
-        tail = 0;
+        restart();
     }
-    if(playY>gridSize-1) {
-        tail = 0;
+    if(playY>gridSize - 1) {
+        restart();
     }
     context.fillStyle="green";
     context.fillRect(0,0,canv.width,canv.height);
@@ -106,12 +114,7 @@ function keyPush(evt) {
 
 function modeGame(e) {
     mode = e.target.name;
-    playX=playY=10;
-    appleX=Math.floor(Math.random()*gridSize);
-    appleY=Math.floor(Math.random()*gridSize);
-    x=y=0;
-    trail=[];
-    tail = 1;
+    restart();
 }
 function check() {
     if(mode == 'modeB')  {
@@ -121,7 +124,7 @@ function check() {
         gameA();
     }
 }
-let myInterval = setInterval(check,100);
+let myInterval = setInterval(check,1000);
 
 buttons.forEach(button => button.addEventListener('click', modeGame));
 document.addEventListener("keydown",keyPush);
