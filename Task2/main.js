@@ -53,10 +53,11 @@ function clearData() {
 }
 function scrollFunc() {
     
-    createData();
+    // createData();
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        createData()
+        createData();
     }
+    console.log(document.body.offsetHeight);
     window.addEventListener('scroll', scrollFunc);
     sortTable();
 }
