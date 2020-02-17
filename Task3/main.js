@@ -1,8 +1,8 @@
 const canv=document.getElementById("canvas");
 const context=canv.getContext("2d");
 const buttons = document.querySelectorAll('input');
-let mode = '';
 
+let mode = '';
 let playX=playY=10;
 let gridSize=20;
 let appleX=Math.floor(Math.random()*gridSize);
@@ -10,6 +10,8 @@ let appleY=Math.floor(Math.random()*gridSize);
 let x=y=0;
 let trail=[];
 let tail = 1;
+
+
 function restart() {
     playX=playY=10;
     appleX=Math.floor(Math.random()*gridSize);
@@ -18,6 +20,7 @@ function restart() {
     trail=[];
     tail = 1;
 }
+
 function gameB() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     playX+=x;
@@ -57,6 +60,7 @@ function gameB() {
     context.fillStyle="red";
     context.fillRect(appleX*gridSize,appleY*gridSize,gridSize-2,gridSize-2);
 }
+
 function gameA() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     playX+=x;
@@ -75,7 +79,6 @@ function gameA() {
     }
     context.fillStyle="green";
     context.fillRect(0,0,canv.width,canv.height);
- 
     context.fillStyle="black";
     
     for(var i=0;i<trail.length;i++) {
@@ -95,8 +98,9 @@ function gameA() {
     context.fillStyle="red";
     context.fillRect(appleX*gridSize,appleY*gridSize,gridSize-2,gridSize-2);
 }
-function keyPush(evt) {
-    switch(evt.keyCode) {
+
+function keyPush(e) {
+    switch(e.keyCode) {
         case 37:
             x=-1;y=0;
             break;
@@ -124,7 +128,7 @@ function check() {
         gameA();
     }
 }
-let myInterval = setInterval(check,1000);
 
+setInterval(check,1000);
 buttons.forEach(button => button.addEventListener('click', modeGame));
 document.addEventListener("keydown",keyPush);

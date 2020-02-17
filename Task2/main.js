@@ -1,4 +1,3 @@
-let sortDirection = false;
 const submit = document.querySelector('input[type="submit"]');
 const tableBody = document.querySelector('tbody');
 const thead = document.querySelector('thead');
@@ -23,10 +22,10 @@ function createTable(rowNum, columnNum) {
         }
         table.push(line);
     }
-    
     thead.innerHTML = stt;
     tableBody.innerHTML = dataHtml;
 }
+
 function createData() {
     let stt = '';
     for (let i = 0; i < 10; i++) {
@@ -45,25 +44,27 @@ function createData() {
     }
     tableBody.innerHTML = dataHtml;
 }
+
 function clearData() {
     dataHtml = '';
     stt = '';
     thead.innerHTML = stt;
     tableBody.innerHTML = dataHtml;
 }
+
 function scrollFunc() {
-    
-    // createData();
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         createData();
     }
     window.addEventListener('scroll', scrollFunc);
     sortTable();
 }
+
 function sortTable() {
     const stt = document.querySelectorAll('th');
     stt.forEach(button => button.addEventListener('click', sortColumn));
 }
+
 function sortColumn() {
     let temp = this.innerHTML - 1;
     table.sort(function (a, b) {
@@ -79,6 +80,7 @@ function sortColumn() {
     }
     tableBody.innerHTML = dataHtml;
 }
+
 document.gridForm.addEventListener('submit', function(e) { 
     e.preventDefault();
     let rowNum = this.row.value;
