@@ -19,6 +19,7 @@ function selectWin(boxes) {
 }
 
 function getWin() {
+    if(count == 8) winner.innerHTML = `The Winner is NoBody`;
     if(boxes[0].innerHTML == boxes[1].innerHTML && boxes[0].innerHTML  == boxes[2].innerHTML && boxes[0].innerHTML != '') selectWin([boxes[0],boxes[1],boxes[2]]);
     if(boxes[3].innerHTML == boxes[4].innerHTML && boxes[3].innerHTML  == boxes[5].innerHTML && boxes[3].innerHTML != '') selectWin([boxes[3],boxes[4],boxes[5]]);
     if(boxes[6].innerHTML == boxes[7].innerHTML && boxes[6].innerHTML  == boxes[8].innerHTML && boxes[6].innerHTML != '') selectWin([boxes[6],boxes[7],boxes[8]]);
